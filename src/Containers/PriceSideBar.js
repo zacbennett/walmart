@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PromoCode from './PromoCode';
-import ItemDetails from './ItemDetails';
+import PromoCode from '../Components/PromoCode';
+import ItemDetails from '../Components/ItemDetails';
 import './PriceSideBar.css';
-import { changePromoCode, addPromoCode } from './Containers/actionCreators';
+import { changePromoCode, addPromoCode } from './actionCreators';
 import { connect } from 'react-redux';
 
 class PriceSideBar extends Component {
@@ -30,7 +30,7 @@ class PriceSideBar extends Component {
 
     this.setState({ subtotal, taxes, estTotal });
   }
-
+  // When the state in the store changes, we need to check if we need to update the discount
   componentDidUpdate(prevProps) {
     if (prevProps.discount !== this.props.discount) {
       let estTotal = this.state.estTotal * (1 - this.props.discount);
@@ -41,7 +41,6 @@ class PriceSideBar extends Component {
   handleClickShowPromoCode() {
     this.setState(state => ({ showPromoCode: !state.showPromoCode }));
   }
-
   handleClickItemDetail() {
     this.setState(state => ({ showItemDetails: !state.showItemDetails }));
   }
@@ -78,7 +77,10 @@ class PriceSideBar extends Component {
             </div>
           </div>
           <div>
-            <p>Est taxes & fees</p>
+            <p>Est taxes & fees
+              <br/>
+              (Based on 94085)
+            </p>
             <p>${this.state.taxes}</p>
           </div>
           <hr />
@@ -107,6 +109,7 @@ class PriceSideBar extends Component {
           <PromoCode
             changePromoCode={this.changePromoCode}
             addPromoCode={this.addPromoCode}
+            error={this.props.error}
           />
         )}
       </div>
@@ -115,10 +118,9 @@ class PriceSideBar extends Component {
 }
 
 function mapStateToProps(state) {
-  return { items: state.items, discount: state.discount };
+  return { items: state.items, discount: state.discount, error: state.error };
 }
 
-// Replace null with actions you want to dispatch in {}
 export default connect(
   mapStateToProps,
   { changePromoCode, addPromoCode }

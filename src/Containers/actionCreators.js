@@ -1,4 +1,9 @@
-import { ADD_PROMO_CODE, ADD_PROMO_CODE_SUCCESS, ADD_PROMO_CODE_INVALID, CHANGE_PROMO_CODE } from './actionTypes';
+import {
+  ADD_PROMO_CODE,
+  ADD_PROMO_CODE_SUCCESS,
+  ADD_PROMO_CODE_INVALID,
+  CHANGE_PROMO_CODE
+} from './actionTypes';
 
 export function addPromoCode() {
   return { type: ADD_PROMO_CODE };

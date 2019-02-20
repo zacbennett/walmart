@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PriceSideBar from './PriceSideBar';
+import PriceSideBar from './Containers/PriceSideBar';
 import './App.css';
 
 class App extends Component {

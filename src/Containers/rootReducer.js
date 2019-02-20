@@ -25,16 +25,13 @@ function rootReducer(
   },
   action
 ) {
-  console.log('reducer ran; state & action:', state, action);
 
   switch (action.type) {
     case ADD_PROMO_CODE_SUCCESS:
-      console.log('in the root reducer, success!')
-      return {...state, loading: false, discount: action.discount}
+      return {...state, loading: false, discount: action.discount, error: ''}
     case CHANGE_PROMO_CODE:
       return {...state, promoCode: action.code}
     case ADD_PROMO_CODE_INVALID:
-      console.log('NAH BRO')
       return {...state, loading: false, error: 'Promo Code Invalid'}
     case ADD_PROMO_CODE:
       return {...state,loading: true };

@@ -7,7 +7,6 @@ class ItemDetails extends Component {
     return (
       <div className="ItemDetails">
         {listOfItems}
-        
       </div>
     );
   }

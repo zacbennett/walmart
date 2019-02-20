@@ -27,6 +27,7 @@ class PromoCode extends Component {
           <input type="text" name="promoCode" onChange={this.handleChange} />
           <button onClick={this.handleClickPromoCode}>Apply</button>
         </form>
+        {this.props.error}
       </div>
     );
   }

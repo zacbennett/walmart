@@ -77,6 +77,6 @@ function mapStateToProps(state){
   return {items:state.items}
 }
 
-// Replace null with actions you want to dispatch
+// Replace null with actions you want to dispatch in {}
 export default connect(mapStateToProps, isNull )(PriceSideBar)
 

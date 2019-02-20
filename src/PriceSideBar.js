@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PromoCode from './PromoCode';
 import ItemDetails from './ItemDetails';
 import './PriceSideBar.css';
+import {changePromoCode, addPromoCode} from './Containers/actionCreators'
 import { connect } from 'react-redux';
-import { isNull } from 'util';
 
 class PriceSideBar extends Component {
   constructor() {
@@ -12,7 +12,7 @@ class PriceSideBar extends Component {
 
     this.handleClickItemDetail = this.handleClickItemDetail.bind(this);
     this.handleClickShowPromoCode = this.handleClickShowPromoCode.bind(this);
-    this.applyPromoCode = this.applyPromoCode.bind(this);
+    this.addPromoCode = this.addPromoCode.bind(this);
     this.changePromoCode = this.changePromoCode.bind(this);
   }
 
@@ -25,11 +25,11 @@ class PriceSideBar extends Component {
     this.setState(state => ({ showItemDetails: !state.showItemDetails }));
   }
 // CALL ACTIONS HERE
-  applyPromoCode(code) {
-    console.log(code);
+  addPromoCode() {
+    this.props.addPromoCode()
   }
   changePromoCode(code) {
-    console.log(code);
+    this.props.changePromoCode(code)
   }
 
   render() {
@@ -72,7 +72,7 @@ class PriceSideBar extends Component {
         {this.state.showPromoCode && (
           <PromoCode
             changePromoCode={this.changePromoCode}
-            applyPromoCode={this.applyPromoCode}
+            addPromoCode={this.addPromoCode}
           />
         )}
       </div>
@@ -87,5 +87,5 @@ function mapStateToProps(state) {
 // Replace null with actions you want to dispatch in {}
 export default connect(
   mapStateToProps,
-  isNull
+  {changePromoCode, addPromoCode}
 )(PriceSideBar);

@@ -28,6 +28,7 @@ function rootReducer(
 
   switch (action.type) {
     case ADD_PROMO_CODE_SUCCESS:
+      console.log('in the root reducer, success!')
       return {...state, loading: false, discount: action.discount}
     case CHANGE_PROMO_CODE:
       return {...state, promoCode: action.code}

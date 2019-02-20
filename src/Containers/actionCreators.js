@@ -11,5 +11,5 @@ export function addPromoCodeInvalid() {
   return { type: ADD_PROMO_CODE_INVALID };
 }
 export function changePromoCode(code) {
-  return { type: ADD_PROMO_CODE_INVALID, code };
+  return { type: CHANGE_PROMO_CODE, code };
 }

@@ -11,7 +11,7 @@ class PromoCode extends Component {
   }
   handleClickPromoCode(evt) {
     evt.preventDefault();
-    this.props.applyPromoCode(this.state.promoCode);
+    this.props.addPromoCode(this.state.promoCode);
   }
 
   handleChange(evt) {

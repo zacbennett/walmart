@@ -1,0 +1,33 @@
+img{
+  width: 80px;
+  height: 80px;
+}
+
+.ItemCard{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: left;
+}
+#title{
+  grid-column: 2 / 4
+}
+
+#price{
+  grid-column: 2;
+  grid-row: 2;
+  font-weight:bold;
+}
+#qty{
+  grid-column: 3;
+  grid-row: 2;
+}
+#price-slash{
+  grid-column: 2;
+  grid-row: 3;
+  text-decoration: line-through;
+  font-weight:bold;
+  color:gray;
+}
+.ItemCard > p{
+  margin:0.3em;
+}

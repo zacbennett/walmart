@@ -1,0 +1,16 @@
+.PromoCode{
+  text-align: left;
+}
+
+button{
+  border-radius: 40%;
+    border: 2px solid black;
+    color: black;
+    width: 30%;
+    font-size: 18px;
+    margin: 0.5em;
+}
+
+label{
+  color: gray;
+}

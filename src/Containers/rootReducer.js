@@ -10,6 +10,7 @@ function rootReducer(
     items: [
       {
         sku: 1234,
+        image: 'https://i5.walmartimages.com/asr/e73e1252-642c-4473-93ea-fd3b564a7027_1.3e81ea58fa3042452fe185129a4a865f.jpeg',
         title:
           'Essentials by OFM ESS-3085 Racing Style Leather Gaming Chair, Red',
         price: 99.11,
@@ -33,6 +34,7 @@ function rootReducer(
     case CHANGE_PROMO_CODE:
       return {...state, promoCode: action.code}
     case ADD_PROMO_CODE_INVALID:
+      console.log('NAH BRO')
       return {...state, loading: false, error: 'Promo Code Invalid'}
     case ADD_PROMO_CODE:
       return {...state,loading: true };

@@ -10,3 +10,13 @@
   flex-direction: row;
   justify-content: space-between;
 } 
+
+#pickup-savings{
+  color:red;
+  font-weight: bold;
+}
+
+#est-total{
+  font-weight: 900;
+  font-size: 20px;
+}

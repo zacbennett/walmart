@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import './PromoCode.css';
+import './PromoCode.css';
 
 class PromoCode extends Component {
   constructor() {

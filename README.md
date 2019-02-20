@@ -1,6 +1,6 @@
 
 
-#In your terminal, run the following commands:
+##In your terminal, run the following commands:
 
   * Run 'npm install'
   * Run 'npm start'

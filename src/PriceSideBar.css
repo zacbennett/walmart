@@ -1,0 +1,12 @@
+.PriceSideBar{
+  width: 30%;
+  margin: 0 auto;
+  border: 1px solid darkgray;
+  padding: 0.5em;
+}
+
+#price-info > div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} 

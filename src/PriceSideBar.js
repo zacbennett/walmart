@@ -2,31 +2,34 @@ import React, { Component } from 'react';
 import PromoCode from './PromoCode';
 import ItemDetails from './ItemDetails';
 import './PriceSideBar.css';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import { isNull } from 'util';
-
 
 class PriceSideBar extends Component {
   constructor() {
     super();
     this.state = { showItemDetails: false, showPromoCode: false };
 
-    this.handleClickItemDetail = this.handleClickItemDetail.bind(this)
-    this.handleClickShowPromoCode = this.handleClickShowPromoCode.bind(this)
-    this.applyPromoCode = this.applyPromoCode.bind(this)
+    this.handleClickItemDetail = this.handleClickItemDetail.bind(this);
+    this.handleClickShowPromoCode = this.handleClickShowPromoCode.bind(this);
+    this.applyPromoCode = this.applyPromoCode.bind(this);
+    this.changePromoCode = this.changePromoCode.bind(this);
   }
 
-  handleClickShowPromoCode(){
-    console.log(this.props.items)
-    this.setState((state) => ({showPromoCode: !state.showPromoCode}))
+  handleClickShowPromoCode() {
+    console.log(this.props.items);
+    this.setState(state => ({ showPromoCode: !state.showPromoCode }));
   }
 
-  handleClickItemDetail(){
-    this.setState((state) => ({showItemDetails: !state.showItemDetails}))
+  handleClickItemDetail() {
+    this.setState(state => ({ showItemDetails: !state.showItemDetails }));
   }
-
-  applyPromoCode(code){
-    console.log(code)
+// CALL ACTIONS HERE
+  applyPromoCode(code) {
+    console.log(code);
+  }
+  changePromoCode(code) {
+    console.log(code);
   }
 
   render() {
@@ -59,24 +62,30 @@ class PriceSideBar extends Component {
             ? `Hide item details -`
             : 'Show item details +'}
         </p>
-          {this.state.showItemDetails && <ItemDetails />}
+        {this.state.showItemDetails && <ItemDetails />}
         <hr />
         <p onClick={this.handleClickShowPromoCode}>
           {this.state.showPromoCode
             ? 'Hide promo code -'
             : 'Apply promo code +'}
         </p>
-        {this.state.showPromoCode && <PromoCode applyPromoCode={this.applyPromoCode}/>}
+        {this.state.showPromoCode && (
+          <PromoCode
+            changePromoCode={this.changePromoCode}
+            applyPromoCode={this.applyPromoCode}
+          />
+        )}
       </div>
     );
   }
 }
 
-
-function mapStateToProps(state){
-  return {items:state.items}
+function mapStateToProps(state) {
+  return { items: state.items };
 }
 
 // Replace null with actions you want to dispatch in {}
-export default connect(mapStateToProps, isNull )(PriceSideBar)
-
+export default connect(
+  mapStateToProps,
+  isNull
+)(PriceSideBar);

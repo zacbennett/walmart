@@ -1,7 +1,7 @@
-import { ADD_PROMO_CODE, ADD_PROMO_CODE_SUCCESS, ADD_PROMO_CODE_INVALID } from './actionTypes';
+import { ADD_PROMO_CODE, ADD_PROMO_CODE_SUCCESS, ADD_PROMO_CODE_INVALID, CHANGE_PROMO_CODE } from './actionTypes';
 
-export function addPromoCode(code) {
-  return { type: ADD_PROMO_CODE, code };
+export function addPromoCode() {
+  return { type: ADD_PROMO_CODE };
 }
 
 export function addPromoCodeSuccess(discount) {
@@ -9,4 +9,7 @@ export function addPromoCodeSuccess(discount) {
 }
 export function addPromoCodeInvalid() {
   return { type: ADD_PROMO_CODE_INVALID };
+}
+export function changePromoCode(code) {
+  return { type: ADD_PROMO_CODE_INVALID, code };
 }

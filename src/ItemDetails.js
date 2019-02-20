@@ -7,11 +7,7 @@ class ItemDetails extends Component {
     return (
       <div className="ItemDetails">
         {listOfItems}
-        {/* <img src="" alt="" />
-        <p id="title"> Item Title</p>
-        <p id="price"> $99.11</p>
-        <p id="qty"> 102.96</p>
-        <p id="price-slash"> Qty:1</p> */}
+        
       </div>
     );
   }

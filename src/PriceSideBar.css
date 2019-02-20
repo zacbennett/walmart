@@ -3,6 +3,8 @@
   margin: 0 auto;
   border: 1px solid darkgray;
   padding: 0.5em;
+  text-align: left;
+  float: right;
 }
 
 #price-info > div{
@@ -19,4 +21,21 @@
 #est-total{
   font-weight: 900;
   font-size: 20px;
+}
+
+
+#pickup-box{
+    background-color: white;
+    border: 1px solid lightgray;
+    position: absolute;
+    width: 10%;
+    font-size: 12px;
+    margin-top: 40px;
+    padding: 1em;
+}
+.hidden{
+  display: none;
+}
+.appear{
+  display: block;
 }

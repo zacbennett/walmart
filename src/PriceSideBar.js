@@ -2,34 +2,39 @@ import React, { Component } from 'react';
 import PromoCode from './PromoCode';
 import ItemDetails from './ItemDetails';
 import './PriceSideBar.css';
-import {changePromoCode, addPromoCode} from './Containers/actionCreators'
+import { changePromoCode, addPromoCode } from './Containers/actionCreators';
 import { connect } from 'react-redux';
 
 class PriceSideBar extends Component {
   constructor() {
     super();
-    this.state = { showItemDetails: true, showPromoCode: false };
+    this.state = {
+      showItemDetails: false,
+      showPromoCode: false,
+      showPickupBox: false
+    };
 
     this.handleClickItemDetail = this.handleClickItemDetail.bind(this);
     this.handleClickShowPromoCode = this.handleClickShowPromoCode.bind(this);
     this.addPromoCode = this.addPromoCode.bind(this);
     this.changePromoCode = this.changePromoCode.bind(this);
+    this.handleShowPickupBox = this.handleShowPickupBox.bind(this);
   }
-  componentDidMount(){
+  componentDidMount() {
     let subtotal = this.props.items.reduce(function(acc, curr) {
       return acc + curr.price;
-    },0);
-    let taxes = Number((subtotal * .1).toFixed(2))
+    }, 0);
+    let taxes = Number((subtotal * 0.1).toFixed(2));
 
     let estTotal = subtotal + taxes;
-    
-    this.setState({subtotal, taxes, estTotal})
+
+    this.setState({ subtotal, taxes, estTotal });
   }
 
-  componentDidUpdate(prevProps){
-    if(prevProps.discount !== this.props.discount){
-      let estTotal = this.state.estTotal * (1-this.props.discount)
-      this.setState({ estTotal})
+  componentDidUpdate(prevProps) {
+    if (prevProps.discount !== this.props.discount) {
+      let estTotal = this.state.estTotal * (1 - this.props.discount);
+      this.setState({ estTotal });
     }
   }
 
@@ -40,11 +45,15 @@ class PriceSideBar extends Component {
   handleClickItemDetail() {
     this.setState(state => ({ showItemDetails: !state.showItemDetails }));
   }
+  handleShowPickupBox() {
+    this.setState(state => ({ showPickupBox: !state.showPickupBox }));
+  }
+
   addPromoCode() {
-    this.props.addPromoCode()
+    this.props.addPromoCode();
   }
   changePromoCode(code) {
-    this.props.changePromoCode(code)
+    this.props.changePromoCode(code);
   }
 
   render() {
@@ -56,11 +65,17 @@ class PriceSideBar extends Component {
             <p>${this.state.subtotal}</p>
           </div>
           <div>
-            {/* TODO DIS */}
             <p>
-              <u>Pickup savings</u>
+              <u onClick={this.handleShowPickupBox}>Pickup savings</u>
             </p>
             <p id="pickup-savings">$3.92</p>
+            <div
+              id="pickup-box"
+              className={this.state.showPickupBox ? 'appear' : 'hidden'}
+            >
+              Picking up your order in the store helps cut costs, and we pass
+              the savings on to you.
+            </div>
           </div>
           <div>
             <p>Est taxes & fees</p>
@@ -73,16 +88,20 @@ class PriceSideBar extends Component {
           </div>
         </div>
         <p onClick={this.handleClickItemDetail}>
-          {this.state.showItemDetails
-            ? `Hide item details -`
-            : 'Show item details +'}
+          <u>
+            {this.state.showItemDetails
+              ? `Hide item details -`
+              : 'Show item details +'}
+          </u>
         </p>
-        {this.state.showItemDetails && <ItemDetails items={this.props.items}/>}
+        {this.state.showItemDetails && <ItemDetails items={this.props.items} />}
         <hr />
         <p onClick={this.handleClickShowPromoCode}>
-          {this.state.showPromoCode
-            ? 'Hide promo code -'
-            : 'Apply promo code +'}
+          <u>
+            {this.state.showPromoCode
+              ? 'Hide promo code -'
+              : 'Apply promo code +'}
+          </u>
         </p>
         {this.state.showPromoCode && (
           <PromoCode
@@ -102,5 +121,5 @@ function mapStateToProps(state) {
 // Replace null with actions you want to dispatch in {}
 export default connect(
   mapStateToProps,
-  {changePromoCode, addPromoCode}
+  { changePromoCode, addPromoCode }
 )(PriceSideBar);

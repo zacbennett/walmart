@@ -6,7 +6,6 @@ img{
 .ItemCard{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  text-align: left;
 }
 #title{
   grid-column: 2 / 4

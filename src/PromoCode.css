@@ -1,6 +1,4 @@
-.PromoCode{
-  text-align: left;
-}
+
 
 button{
   border-radius: 40%;
@@ -13,4 +11,9 @@ button{
 
 label{
   color: gray;
+  
+}
+
+input{
+  height: 25px;
 }

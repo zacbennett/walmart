@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PromoCode from './PromoCode';
 import ItemDetails from './ItemDetails';
 import './PriceSideBar.css';
+import {connect} from 'react-redux'
+import { isNull } from 'util';
+
 
 class PriceSideBar extends Component {
   constructor() {
@@ -10,14 +13,20 @@ class PriceSideBar extends Component {
 
     this.handleClickItemDetail = this.handleClickItemDetail.bind(this)
     this.handleClickShowPromoCode = this.handleClickShowPromoCode.bind(this)
+    this.applyPromoCode = this.applyPromoCode.bind(this)
   }
 
   handleClickShowPromoCode(){
+    console.log(this.props.items)
     this.setState((state) => ({showPromoCode: !state.showPromoCode}))
   }
 
   handleClickItemDetail(){
     this.setState((state) => ({showItemDetails: !state.showItemDetails}))
+  }
+
+  applyPromoCode(code){
+    console.log(code)
   }
 
   render() {
@@ -57,10 +66,17 @@ class PriceSideBar extends Component {
             ? 'Hide promo code -'
             : 'Apply promo code +'}
         </p>
-        {this.state.showPromoCode && <PromoCode />}
+        {this.state.showPromoCode && <PromoCode applyPromoCode={this.applyPromoCode}/>}
       </div>
     );
   }
 }
 
-export default PriceSideBar;
+
+function mapStateToProps(state){
+  return {items:state.items}
+}
+
+// Replace null with actions you want to dispatch
+export default connect(mapStateToProps, isNull )(PriceSideBar)
+
